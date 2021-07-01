@@ -1,0 +1,1 @@
+{"version":3,"sources":["sass/main.scss"],"names":[],"mappings":"AAAA,KACE,SAGF,OACE,iBAAA,CACA,eAAA,CACA,aAAA,CACA","file":"colorswitch.084789c1.css","sourceRoot":"../src","sourcesContent":["body {\n  margin: 0;\n}\n\nbutton {\n  padding: 10px 40px;\n  font-weight: 700;\n  color: rgb(36, 2, 75);\n  margin: 10px;\n}\n"]}
