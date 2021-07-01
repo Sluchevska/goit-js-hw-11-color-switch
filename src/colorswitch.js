@@ -12,14 +12,25 @@ const bodyRef = document.querySelector('body');
 const startBtn = document.querySelector("[data-action='start']");
 const stopBtn = document.querySelector("[data-action='stop']");
 
-startBtn.addEventListener('click', randomColorSwitch);
-stopBtn.addEventListener('click', clearInterval);
+startBtn.addEventListener('click', () => {
+  random.start()
+});
+stopBtn.addEventListener('click', () => {
+  random.stop()
+});
 
-function randomColorSwitch() {
-    
-    
-    // bodyRef.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-  let intervalID = setInterval(function () {
+class Random {
+  constructor({ onClick }) {
+    this.intervalID = null;
+    this.isActive = false;
+    this.onClick = onClick;
+  }
+  start() {
+    if (this.isActive) {
+      return
+    }
+    this.isActive = true;
+    this.intervalID = setInterval(function () {
     const randomIntegerFromInterval = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
          
@@ -27,11 +38,12 @@ function randomColorSwitch() {
     
     bodyRef.style.backgroundColor = colors[randomIntegerFromInterval(0,6)]
   },1000)
-    
-    
-};
+  }
+  stop() {
+  clearInterval(this.intervalID);
+  this.isActive = false
+}
+}
 
-function clearInterval() {
-  clearInterval(intervalID)
-};
-
+const random = new Random({
+  onClick: setInterval})
