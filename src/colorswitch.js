@@ -29,19 +29,21 @@ class Random {
     if (this.isActive) {
       return
     }
-    this.isActive = true;
-    this.intervalID = setInterval(function () {
-    const randomIntegerFromInterval = (min, max) => {
+    else if (this.isActive = true) { 
+      this.intervalID = setInterval(function () {
+      startBtn.disabled = true
+      const randomIntegerFromInterval = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
-         
-    };
+      };
     
-    bodyRef.style.backgroundColor = colors[randomIntegerFromInterval(0,6)]
-  },1000)
+      bodyRef.style.backgroundColor = colors[randomIntegerFromInterval(0, 6)]
+    }, 1000)
+  }
   }
   stop() {
   clearInterval(this.intervalID);
-  this.isActive = false
+    this.isActive = false
+    startBtn.disabled = false
 }
 }
 
